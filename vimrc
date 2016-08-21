@@ -126,18 +126,12 @@ let NERDTreeAutoDeleteBuffer=1
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" EasyMove
-" <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-nmap <Leader>f <Plug>(easymotion-overwin-f)
-" s{char}{char} to move to {char}{char}
-nmap s <Plug>(easymotion-overwin-f2)
-" Move to line
-map <Leader>L <Plug>(easymotion-bd-jk)
-nmap <Leader>L <Plug>(easymotion-overwin-line)
-" Move to word
-map  <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>w <Plug>(easymotion-overwin-w)
+" EasyMotion
+map <Leader><leader>h <Plug>(easymotion-linebackward)
+map <Leader><Leader>j <Plug>(easymotion-j)
+map <Leader><Leader>k <Plug>(easymotion-k)
+map <Leader><leader>l <Plug>(easymotion-lineforward)
+map <Leader><leader>. <Plug>(easymotion-repeat)
 
 " Vim-GO
 let g:go_highlight_functions = 1
@@ -152,5 +146,13 @@ let g:UltiSnipsExpandTrigger="<Leader>sn"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+" CtrlP
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll|dmg|tar.gz|bgz|zip|pdf|pyc|PNG|png|gif|jpeg|iso)$',
+  \ }
+let g:ctrlp_mruf_max=200
+
 " Plugin Settings }
 
