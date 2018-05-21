@@ -1,25 +1,21 @@
-" Vundle Manager Plugins {
-set nocompatible
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.config/nvim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'tomasr/molokai'
-Plugin 'ervandew/supertab'
-Plugin 'fatih/vim-go'
-Plugin 'roxma/SimpleAutoComplPop'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/nerdtree'
-Plugin 'kien/ctrlp.vim'
-Plugin 'majutsushi/tagbar'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plug 'ervandew/supertab'
+Plug 'fatih/vim-go'
+Plug 'roxma/SimpleAutoComplPop'
+Plug 'Raimondi/delimitMate'
+Plug 'scrooloose/nerdtree'
+Plug 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'easymotion/vim-easymotion'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'klen/python-mode', {'branch': 'develop'}
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'altercation/vim-colors-solarized'
 
-call vundle#end()
-filetype plugin indent on
-" Vundle Manager Plugins }
+call plug#end()
 
 " Improved Settings {
 " 开启语法高亮功能
@@ -39,8 +35,10 @@ set ignorecase
 " vim 自身命令行模式智能补全
 set wildmenu
 " 配色方案
+" set background=light
 set background=light
-colorscheme molokai
+let g:solarized_termcolors=256
+colorscheme solarized
 " 总是显示状态栏
 set laststatus=2
 " 显示光标当前位置
@@ -50,6 +48,8 @@ set number
 " 高亮显示当前行/列
 set cursorline
 " 高亮显示搜索结果
+" neovim #7002
+set guicursor=
 set hlsearch
 " 禁止折行
 set nowrap
@@ -65,6 +65,14 @@ set softtabstop=4
 set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
 set nofoldenable
+set noswapfile
+set nobackup
+set completeopt=menu
+
+" for tmux
+if exists($TMUX)
+    set term=screen-256color
+endif
 " Improved Settings }
 
 " Keys Map {
@@ -122,9 +130,11 @@ let NERDTreeWinPos="left"
 let NERDTreeShowHidden=1
 let NERDTreeMinimalUI=0
 let NERDTreeAutoDeleteBuffer=1
+let NERDTreeIgnore=['\.svn$', '\.ropeproject$', '\.pyc$', '\.idea$']
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
+let g:tagbar_width = 25
 
 " EasyMotion
 map <Leader><leader>h <Plug>(easymotion-linebackward)
@@ -154,5 +164,13 @@ let g:ctrlp_custom_ignore = {
   \ }
 let g:ctrlp_mruf_max=200
 
-" Plugin Settings }
+" python-mode
+let g:pymode_lint = 0
+let g:pymode_rope = 1
+let g:pymode_motion = 1
+let g:pymode_options_colorcolumn = 0
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_print_as_function = 0
+let g:python2_host_prog = '/usr/local/bin/python'
 
+" Plugin Settings }
