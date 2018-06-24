@@ -14,6 +14,7 @@ Plug 'klen/python-mode', {'branch': 'develop'}
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline'
 Plug 'altercation/vim-colors-solarized'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 
@@ -152,10 +153,12 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger="<Leader>sn"
+let g:UltiSnipsUsePythonVersion = 2
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
+
 " CtrlP
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 let g:ctrlp_custom_ignore = {
